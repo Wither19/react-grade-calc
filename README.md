@@ -10,10 +10,10 @@ The React.js Vite template with [@vitejs/plugin-react](https://github.com/vitejs
 
 ## Setup Steps
 
-All that needs to be done is install the packages for the vite template, just run
+All that needs to be done is install the packages
 
 `npm install`
 
-> > > > > > > a060ce6 (c)
+Then run
 
 `npm run dev`
