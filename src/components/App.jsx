@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import _ from "lodash";
 
@@ -20,7 +20,7 @@ function App() {
 			name: "English III",
 			honors: false,
 			ap: false,
-			grade: 96.83,
+			grade: 97.58,
 		},
 		{
 			block: 3,
@@ -55,7 +55,7 @@ function App() {
 			name: "Computer Science Essentials",
 			honors: true,
 			ap: false,
-			grade: 91.53,
+			grade: 90.66,
 		},
 		{
 			block: 8,
@@ -66,10 +66,6 @@ function App() {
 		},
 	];
 
-	const [classes, setClasses] = useState(classList);
-
-	const [showNoGradeClasses, setShowNoGradeClasses] = useState(true);
-
 	const average = (list, decimal) => {
 		parseFloat(
 			(list.reduce((a, b) => a + b) / list.length).toFixed(
@@ -78,33 +74,53 @@ function App() {
 		);
 	};
 
-	const [gradeAverage, setAverage] = useState(average(_.compact(grades), 2));
+	const [classes, setClasses] = useState(classList);
+	const [omitNoGrade, setOmitNoGrade] = useState(false);
+
+	useEffect(() => {
+		if (omitNoGrade) {
+			setClasses(classes.filter((c) => c.grade !== null));
+		} else {
+			setClasses(classList);
+		}
+	}, [omitNoGrade]);
 
 	return (
 		<>
-			<label for="no-grade-classes">Show Classes Without Grades</label>
-			<input
-				id="no-grade-classes"
-				type="checkbox"
-				checked={showNoGradeClasses}
-				onChange={() => setShowNoGradeClasses((prev) => !prev)}
-			/>
-			<table>
-				<tr>
-					<th>Class Name</th>
-					<th>Grade</th>
-				</tr>
-				{classList && gradeList
-					? classList.map((course, index) => (
+			<div className="table-container">
+				<table>
+					<thead>
+						<tr>
+							<th>Block</th>
+							<th>Class</th>
+							<th>Grade</th>
+						</tr>
+					</thead>
+					<tbody>
+						{classes.map((c, index) => (
 							<>
 								<tr>
-									<td>{course.name}</td>
-									<td>{!!gradeList[index] ? `${gradeList[index]}%` : "N/A"}</td>
+									<td>{c.block}</td>
+									<td>{c.name}</td>
+									<td>
+										{c.grade ?? "N/A"}
+										{!!c.grade && "%"}
+									</td>
 								</tr>
 							</>
-					  ))
-					: null}
-			</table>
+						))}
+					</tbody>
+				</table>
+			</div>
+			<div className="options">
+				<label htmlFor="omitGrades">Show Classes Without Grades</label>
+				<input
+					type="checkbox"
+					id="omitGrades"
+					onChange={() => setOmitNoGrade((prev) => !prev)}
+					value={omitNoGrade}
+				/>
+			</div>
 		</>
 	);
 }

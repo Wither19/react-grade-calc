@@ -1,11 +1,28 @@
 #root {
 	margin: 0 auto;
 	padding: 2rem;
+	font-family: sans-serif;
 }
 
 table,
-th,
-td {
+table :is(th, td) {
 	border: 1px solid black;
 	border-collapse: collapse;
+}
+
+th,
+td {
+	padding: 0.2rem 0.5rem;
+}
+
+.table-container {
+	min-height: 250px;
+}
+
+.options {
+	margin: 2.5rem 0.5rem;
+}
+
+label {
+	margin-right: 0.25rem;
 }
