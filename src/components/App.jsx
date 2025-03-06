@@ -75,6 +75,7 @@ function App() {
 	};
 
 	const [classes, setClasses] = useState(classList);
+	const [grades, setGrades] = useState(_.map(classes, (c) => c.grade));
 	const [omitNoGrade, setOmitNoGrade] = useState(false);
 
 	useEffect(() => {
@@ -114,13 +115,7 @@ function App() {
 			</div>
 			<div className="average-grade-container">
 				<h2>Average Grade:</h2>
-				<h3>
-					{average(
-						_.map(_.compact(classes), (c) => c.grade),
-						2
-					)}
-					%
-				</h3>
+				<h3>{_.compact(average(grades))}%</h3>
 			</div>
 			<div className="options">
 				<label htmlFor="omitGrades">Show Classes Without Grades</label>
