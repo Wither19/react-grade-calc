@@ -7,68 +7,66 @@ import viteLogo from "/vite.svg";
 import "../scss/App.scss";
 
 function App() {
-	const [count, setCount] = useState(0);
-	const [classList, setClassList] = useState([
+	var classList = [
 		{
 			block: 1,
 			name: "Marine Science",
 			honors: false,
 			ap: false,
+			grade: 90.16,
 		},
 		{
 			block: 2,
 			name: "English III",
 			honors: false,
 			ap: false,
+			grade: 96.83,
 		},
 		{
 			block: 3,
 			name: "Apologetics",
 			honors: false,
 			ap: false,
+			grade: 91.01,
 		},
 		{
 			block: 4,
 			name: "Spanish II",
 			honors: true,
 			ap: false,
+			grade: 84.87,
 		},
 		{
 			block: 5,
 			name: "Geometry",
 			honors: false,
 			ap: false,
+			grade: 90.72,
 		},
 		{
 			block: 6,
 			name: "Study Hall",
 			honors: false,
 			ap: false,
+			grade: null,
 		},
 		{
 			block: 7,
 			name: "Computer Science Essentials",
 			honors: true,
 			ap: false,
+			grade: 91.53,
 		},
 		{
 			block: 8,
 			name: "US History",
 			honors: false,
 			ap: false,
+			grade: 94.48,
 		},
-	]);
+	];
 
-	const [grades, setGrades] = useState([
-		90.16,
-		96.83,
-		91.01,
-		84.87,
-		90.72,
-		null,
-		91.53,
-		94.48,
-	]);
+	const [classes, setClasses] = useState(classList);
 
 	const [showNoGradeClasses, setShowNoGradeClasses] = useState(true);
 
@@ -96,29 +94,16 @@ function App() {
 					<th>Class Name</th>
 					<th>Grade</th>
 				</tr>
-				{classList.map((course, index) => (
-					<>
-						<tr>
-							<td>{course.name}</td>
-							<td
-								onClick={() => {
-									const newGrade = prompt(
-										"Enter a new grade for " + course.name
-									);
-									if (newGrade !== null) {
-										const courseIndex = classList.findIndex(
-											(c) => c.name === course.name
-										);
-										const updatedGrades = [...grades];
-										updatedGrades[courseIndex] = parseFloat(newGrade);
-										setGrades(updatedGrades);
-									}
-								}}>
-								{!!grades[index] ? `${grades[index]}%` : "N/A"}
-							</td>
-						</tr>
-					</>
-				))}
+				{classList && gradeList
+					? classList.map((course, index) => (
+							<>
+								<tr>
+									<td>{course.name}</td>
+									<td>{!!gradeList[index] ? `${gradeList[index]}%` : "N/A"}</td>
+								</tr>
+							</>
+					  ))
+					: null}
 			</table>
 		</>
 	);
