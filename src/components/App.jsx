@@ -112,6 +112,16 @@ function App() {
 					</tbody>
 				</table>
 			</div>
+			<div className="average-grade-container">
+				<h2>Average Grade:</h2>
+				<h3>
+					{average(
+						_.map(_.compact(classes), (c) => c.grade),
+						2
+					)}
+					%
+				</h3>
+			</div>
 			<div className="options">
 				<label htmlFor="omitGrades">Show Classes Without Grades</label>
 				<input
