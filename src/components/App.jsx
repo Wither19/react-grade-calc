@@ -86,8 +86,11 @@ function App() {
 		}
 	}, [omitNoGrade]);
 
+	const changeToInput = (e) => {};
+
 	return (
 		<>
+<<<<<<< HEAD
 			<div className="table-container">
 				<table>
 					<thead>
@@ -126,6 +129,35 @@ function App() {
 					value={omitNoGrade}
 				/>
 			</div>
+=======
+			<label htmlFor="no-grade-classes">Show Classes Without Grades</label>
+			<input
+				id="no-grade-classes"
+				type="checkbox"
+				checked={showNoGradeClasses}
+				onChange={() => setShowNoGradeClasses((prev) => !prev)}
+			/>
+			<table>
+				<thead>
+					<tr>
+						<th>Class Name</th>
+						<th>Grade</th>
+					</tr>
+				</thead>
+				<tbody>
+					{classList.map((course, index) => (
+						<>
+							<tr>
+								<td key={course.name}>{course.name}</td>
+								<td key={`block-${course.id}`} onClick={changeToInput}>
+									{!!grades[index] ? `${grades[index]}%` : "N/A"}
+								</td>
+							</tr>
+						</>
+					))}
+				</tbody>
+			</table>
+>>>>>>> f56b033 (c)
 		</>
 	);
 }
