@@ -2,11 +2,16 @@
 	margin: 0 auto;
 	padding: 2rem;
 	font-family: sans-serif;
+	color: whitesmoke;
+}
+
+body {
+	background-color: rgb(24, 28, 53);
 }
 
 table,
 table :is(th, td) {
-	border: 1px solid black;
+	border: 1px solid rgb(199, 199, 199);
 	border-collapse: collapse;
 }
 

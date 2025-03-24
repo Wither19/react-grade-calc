@@ -1,9 +1,7 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import _ from "lodash";
 
-import reactLogo from "../assets/react.svg";
-import viteLogo from "/vite.svg";
 import "../scss/App.scss";
 
 function App() {
@@ -66,11 +64,9 @@ function App() {
 		},
 	];
 
-	const average = (list: Array<any>, decimal) => {
-		parseFloat(
-			(list.reduce((a, b) => a + b) / list.length).toFixed(
-				decimal ? decimal : 2
-			)
+	const average = (list: Array<any>, decimal?: number): number => {
+		return parseFloat(
+			(list.reduce((a, b) => a + b) / list.length).toFixed(decimal || 2)
 		);
 	};
 
@@ -80,7 +76,7 @@ function App() {
 
 	useEffect(() => {
 		if (omitNoGrade) {
-			setClasses(classes.filter((c) => c.grade !== null));
+			setClasses((prev) => prev.filter((c) => c.grade !== null));
 		} else {
 			setClasses(classList);
 		}
@@ -125,7 +121,7 @@ function App() {
 					type="checkbox"
 					id="omitGrades"
 					onChange={() => setOmitNoGrade((prev) => !prev)}
-					value={omitNoGrade}
+					checked={omitNoGrade}
 				/>
 			</div>
 		</>
