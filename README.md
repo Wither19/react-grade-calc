@@ -12,8 +12,8 @@ The React.js Vite template with [@vitejs/plugin-react](https://github.com/vitejs
 
 All that needs to be done is install the packages
 
-`npm install`
+`yarn`
 
 Then run
 
-`npm run dev`
+`yarn dev`
