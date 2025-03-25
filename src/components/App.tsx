@@ -4,8 +4,16 @@ import _ from "lodash";
 
 import "../scss/App.scss";
 
+type blockGrade = {
+	block: number;
+	name: string;
+	honors?: boolean;
+	ap?: boolean;
+	grade: number | null;
+};
+
 function App() {
-	var classList = [
+	var classList: Array<blockGrade> = [
 		{
 			block: 1,
 			name: "Marine Science",
