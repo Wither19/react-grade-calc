@@ -3,9 +3,9 @@ import { createRoot } from "react-dom/client";
 
 import App from "./components/App.tsx";
 
-const rootElement = document.getElementById("root");
-if (rootElement) {
-	createRoot(rootElement).render(
+const root = document.getElementById("root");
+if (root) {
+	createRoot(root).render(
 		<StrictMode>
 			<App />
 		</StrictMode>
