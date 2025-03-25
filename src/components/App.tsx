@@ -4,7 +4,7 @@ import _ from "lodash";
 
 import "../scss/App.scss";
 
-type blockGrade = {
+type BlockGrade = {
 	block: number;
 	name: string;
 	honors?: boolean;
@@ -13,61 +13,47 @@ type blockGrade = {
 };
 
 function App() {
-	var classList: Array<blockGrade> = [
+	var classList: Array<BlockGrade> = [
 		{
 			block: 1,
 			name: "Marine Science",
-			honors: false,
-			ap: false,
 			grade: 90.16,
 		},
 		{
 			block: 2,
 			name: "English III",
-			honors: false,
-			ap: false,
 			grade: 97.58,
 		},
 		{
 			block: 3,
 			name: "Apologetics",
-			honors: false,
-			ap: false,
 			grade: 91.01,
 		},
 		{
 			block: 4,
 			name: "Spanish II",
 			honors: true,
-			ap: false,
 			grade: 84.87,
 		},
 		{
 			block: 5,
 			name: "Geometry",
-			honors: false,
-			ap: false,
 			grade: 90.72,
 		},
 		{
 			block: 6,
 			name: "Study Hall",
-			honors: false,
-			ap: false,
 			grade: null,
 		},
 		{
 			block: 7,
 			name: "Computer Science Essentials",
 			honors: true,
-			ap: false,
 			grade: 90.66,
 		},
 		{
 			block: 8,
 			name: "US History",
-			honors: false,
-			ap: false,
 			grade: 94.48,
 		},
 	];
