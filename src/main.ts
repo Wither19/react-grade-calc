@@ -14,7 +14,9 @@ type InputEditable = {
 	isEditable: boolean;
 };
 
-var classList: Array<BlockGrade & InputEditable> = [
+type BlockInfo = BlockGrade & InputEditable;
+
+var classList: Array<BlockInfo> = [
 	{
 		block: 1,
 		name: "Marine Science",
