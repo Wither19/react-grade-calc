@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import _ from "lodash";
 
 import { average, sortListState } from "./functions";
-import type { BlockGrade, InputEditable, BlockInfo } from "./types";
+import type { BlockInfo } from "./types";
+import { BsSortDownAlt, BsSortUpAlt } from "react-icons/bs";
 
 function App() {
 	var classList: Array<BlockInfo> = [
@@ -58,12 +59,25 @@ function App() {
 		},
 	];
 
-	const [classes, setClasses] = useState(
+	const [classes, setClasses] = useState<Array<any>>(
 		classList.filter((item) => item.grade != null)
 	);
+	const [sortAscending, setAscending] = useState<boolean>(true);
+	const [sortType, setSortType] = useState<string>("block");
+
+	const handleSortButton = () => {
+		setAscending((prev) => !prev);
+	};
+
+	useEffect(() => {
+		setClasses((prev) => sortListState(prev, sortType, sortAscending));
+	}, [sortAscending, sortType]);
 
 	return (
 		<>
+			<button onClick={handleSortButton}>
+				{sortAscending ? <BsSortUpAlt /> : <BsSortDownAlt />}
+			</button>
 			<table>
 				<thead>
 					<th>Block</th>

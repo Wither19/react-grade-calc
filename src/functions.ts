@@ -12,8 +12,6 @@ export const sortListState = (
 	sortType: string,
 	ascending: boolean
 ): Array<any> => {
-	let newList: Array<any> = ascending
-		? _.sortBy(list, [sortType])
-		: _.reverse(_.sortBy(list, [sortType]));
+	let newList: Array<any> = _.orderBy(list, [sortType], [ascending]);
 	return newList;
 };
