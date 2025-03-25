@@ -1,6 +1,6 @@
 import _ from "lodash";
 
-import "../scss/App.scss";
+import "./scss/App.scss";
 
 type BlockGrade = {
 	block: number;
