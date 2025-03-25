@@ -1,7 +1,7 @@
 import { useState } from "react";
 import _ from "lodash";
 
-import { average } from "./functions";
+import { average, sortListState } from "./functions";
 import type { BlockGrade, InputEditable, BlockInfo } from "./types";
 
 function App() {
@@ -58,19 +58,39 @@ function App() {
 		},
 	];
 
-	const changeToInput = (index: number) => {
-		classList[index].isEditable = true;
-	};
+	const [classes, setClasses] = useState(
+		classList.filter((item) => item.grade != null)
+	);
 
-	const changeToTableData = (index: number) => {
-		classList[index].isEditable = false;
-	};
-
-	const submitNewGrade = (index: number, domNode: string) => {
-		classList[index].grade = parseFloat(domNode);
-	};
-
-	return <></>;
+	return (
+		<>
+			<table>
+				<thead>
+					<th>Block</th>
+					<th>Class</th>
+					<th>Grade</th>
+				</thead>
+				<tbody>
+					{classes
+						.filter((item) => item.grade != null)
+						.map((item, index) => (
+							<tr key={`class-${index}`}>
+								<td>{item.block}</td>
+								<td>
+									{item.ap ? "AP " : ""}
+									{item.name}
+									{item.honors ? " Honors" : ""}
+								</td>
+								<td>{item.grade}%</td>
+							</tr>
+						))}
+				</tbody>
+			</table>
+			<br />
+			<h2>Average Grade</h2>
+			<span>{average(classes.map((item) => item.grade))}%</span>
+		</>
+	);
 }
 
 export default App;
