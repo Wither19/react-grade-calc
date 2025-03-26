@@ -10,32 +10,32 @@ function App() {
 		{
 			block: 1,
 			name: "Marine Science",
-			grade: 90.16,
+			grade: 93.75,
 			isEditable: false,
 		},
 		{
 			block: 2,
 			name: "English III",
-			grade: 97.58,
+			grade: 97.01,
 			isEditable: false,
 		},
 		{
 			block: 3,
 			name: "Apologetics",
-			grade: 91.01,
+			grade: 92.68,
 			isEditable: false,
 		},
 		{
 			block: 4,
 			name: "Spanish II",
 			honors: true,
-			grade: 84.87,
+			grade: 87.44,
 			isEditable: false,
 		},
 		{
 			block: 5,
 			name: "Geometry",
-			grade: 90.72,
+			grade: 90.92,
 			isEditable: false,
 		},
 		{
@@ -48,13 +48,13 @@ function App() {
 			block: 7,
 			name: "Computer Science Essentials",
 			honors: true,
-			grade: 90.66,
+			grade: 93.26,
 			isEditable: false,
 		},
 		{
 			block: 8,
 			name: "US History",
-			grade: 94.48,
+			grade: 94.1,
 			isEditable: false,
 		},
 	];
@@ -69,6 +69,10 @@ function App() {
 		setAscending((prev) => !prev);
 	};
 
+	const sortDataTypeChange = (sorting: string) => {
+		setSortType(sorting);
+	};
+
 	useEffect(() => {
 		setClasses((prev) => sortListState(prev, sortType, sortAscending));
 	}, [sortAscending, sortType]);
@@ -80,9 +84,13 @@ function App() {
 			</button>
 			<table>
 				<thead>
-					<th>Block</th>
-					<th>Class</th>
-					<th>Grade</th>
+					<tr>
+						<th onClick={(e) => sortDataTypeChange(e.currentTarget.innerText)}>
+							Block
+						</th>
+						<th>Class</th>
+						<th>Grade</th>
+					</tr>
 				</thead>
 				<tbody>
 					{classes
